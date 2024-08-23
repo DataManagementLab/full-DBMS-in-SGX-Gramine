@@ -752,7 +752,7 @@ static int _libos_syscall_futex(uint32_t* uaddr, int op, uint32_t val, void* uti
             return -ENOSYS;
         }
         /* Gramine has only one clock for now. */
-        log_warning("Ignoring FUTEX_CLOCK_REALTIME flag");
+        // log_warning("Ignoring FUTEX_CLOCK_REALTIME flag");
     }
 
     if (!(op & FUTEX_PRIVATE_FLAG)) {

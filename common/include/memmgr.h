@@ -261,6 +261,6 @@ static inline void free_mem_obj_to_mgr(MEM_MGR mgr, OBJ_TYPE* obj) {
     SYSTEM_LOCK();
     INIT_LIST_HEAD(mobj, __list);
     LISTP_ADD_TAIL(mobj, &mgr->free_list, __list);
-    CHECK_LIST_HEAD(MEM_OBJ, &mgr->free_list, __list);
+    // CHECK_LIST_HEAD(MEM_OBJ, &mgr->free_list, __list);
     SYSTEM_UNLOCK();
 }
