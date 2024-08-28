@@ -104,6 +104,11 @@ if debug
     add_project_arguments('-DDEBUG', language: 'c')
 endif
 
+no_list_check = get_option('list_check') == 'disabled'
+if no_list_check
+    add_project_arguments('-DNO_LIST_CHECK', language: 'c')
+endif
+
 if sgx
     conf_sgx = configuration_data()
 

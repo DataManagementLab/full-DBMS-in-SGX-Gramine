@@ -37,3 +37,6 @@ option('vtune', type: 'combo', choices: ['disabled', 'enabled'],
 option('vtune_sdk_path', type: 'string',
     value: '/opt/intel/oneapi/vtune/latest/sdk',
     description: 'Path to the VTune SDK installation')
+
+option('list_check', type: 'combo', choices: ['enabled', 'disabled'],
+       description: 'Activate or deactivate the list check in memmgr.h')

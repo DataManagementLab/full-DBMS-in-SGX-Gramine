@@ -227,7 +227,9 @@ alloc:;
     if (use_free_list) {
         mobj = LISTP_FIRST_ENTRY(&mgr->free_list, MEM_OBJ_TYPE, __list);
         LISTP_DEL_INIT(mobj, &mgr->free_list, __list);
+#ifndef NO_LIST_CHECK
         CHECK_LIST_HEAD(MEM_OBJ, &mgr->free_list, __list);
+#endif
     } else {
         mobj = mgr->obj++;
     }
@@ -261,6 +263,8 @@ static inline void free_mem_obj_to_mgr(MEM_MGR mgr, OBJ_TYPE* obj) {
     SYSTEM_LOCK();
     INIT_LIST_HEAD(mobj, __list);
     LISTP_ADD_TAIL(mobj, &mgr->free_list, __list);
+#ifndef NO_LIST_CHECK
     CHECK_LIST_HEAD(MEM_OBJ, &mgr->free_list, __list);
+#endif
     SYSTEM_UNLOCK();
 }
